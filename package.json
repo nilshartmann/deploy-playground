@@ -5,9 +5,10 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dist": "npm run clean && webpack --config webpack.config.prod.js",
-		"clean": "rm -rf public/dist/",
-		"start": "webpack -w"
+		"dist":
+			"rimraf dist/ && webpack -p --config webpack.config.prod.js && cp -r lib dist/",
+		"clean": "rimraf public/dist/",
+		"dev": "npm run clean && webpack --config webpack.config.js"
 	},
 	"keywords": [],
 	"author": "",

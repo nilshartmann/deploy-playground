@@ -1,11 +1,12 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: "./src/main.jsx",
 	output: {
-		path: __dirname + "/public/dist/",
+		path: __dirname + "/dist/",
 		filename: "[name].[chunkhash].js",
-		publicPath: "/dist"
+		publicPath: "/"
 	},
 	resolve: {
 		extensions: [".js", ".jsx"]
@@ -35,6 +36,16 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [new ExtractTextPlugin("styles-[name].[chunkhash].css")],
-	devtool: "inline-source-map"
+	plugins: [
+		new ExtractTextPlugin("styles-[name].[chunkhash].css"),
+		new HtmlWebpackPlugin({
+			template: "index.template.ejs",
+			inject: "body"
+		})
+	],
+	externals: {
+		react: "React",
+		"react-dom": "ReactDOM"
+	},
+	devtool: "source-map"
 };

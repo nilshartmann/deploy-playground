@@ -35,6 +35,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ExtractTextPlugin("styles-app-one.css")],
-  devtool: "inline-source-map"
+  plugins: [new ExtractTextPlugin("styles.css")],
+  devtool: "source-map"
 };
